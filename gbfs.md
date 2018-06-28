@@ -191,6 +191,8 @@ stations          | Yes       | Array that contains one object per station in th
 \- post_code       | Optional  | Postal code where station is located
 \- rental_methods  | Optional  | Array of enumerables containing the payment methods accepted at this station. <br />Current valid values (in CAPS) are:<br /><ul><li>KEY _(i.e. operator issued bike key / fob / card)_</li> <li>CREDITCARD</li> <li>PAYPASS</li> <li>APPLEPAY</li> <li>ANDROIDPAY</li> <li>TRANSITCARD</li> <li>ACCOUNTNUMBER</li> <li>PHONE</li> </ul> This list is intended to be as comprehensive at the time of publication as possible but is subject to change, as defined in [File Requirements](#file-requirements) above
 \- capacity        | Optional  | Number of total docking points installed at this station, both available and unavailable
+\- is_physical     | Optional  | Boolean that describes if station is a physical station or a virtual station.
+\- location        | Conditionally required   | Required if is_physical is false, shows the exact location of the virtual station. Could optionally also be provided in case of a physical station. Should be provided as a GeoJSON polygon https://tools.ietf.org/html/rfc7946#section-3.1.6.
 
 ### station_status.json
 
