@@ -18,6 +18,7 @@ This document explains the types of files and data that comprise the General Bik
     * [system_regions.json](#system_regionsjson)
     * [system_pricing_plans.json](#system_pricing_plansjson)
     * [system_alerts.json](#system_alertsjson)
+    * [bike_types.json](#bike_typesjson)
 * [Possible Future Enhancements](#possible-future-enhancements)
 
 ## Revision History
@@ -49,6 +50,8 @@ system_calendar.json        | Optional      | Describes the days of operation fo
 system_regions.json         | Optional      | Describes the regions the system is broken up into
 system_pricing_plans.json   | Optional      | Describes the system pricing
 system_alerts.json          | Optional      | Describes current system alerts
+system_alerts.json          | Optional      | Describes current system alerts
+bike_types.json             | Optional      | Describes bike types used by the operator.
 
 ## File Requirements
 * All files should be valid JSON
@@ -218,6 +221,7 @@ bikes             | Yes       | Array that contains one object per bike that is 
 \- lon             | Yes       | Longitude of the bike. The field value must be a valid WGS 84 latitude in decimal degrees format. See: http://en.wikipedia.org/wiki/World_Geodetic_System, https://en.wikipedia.org/wiki/Decimal_degrees
 \- is_reserved     | Yes       | 1/0 value - is the bike currently reserved for someone else
 \- is_disabled     | Yes       | 1/0 value - is the bike currently disabled (broken)
+\- bike_type       | Optional  | String - is the bike currently disabled (broken)
 
 ### system_hours.json
 Describes the system hours of operation. A JSON array of hours defined as follows:
@@ -316,6 +320,20 @@ alerts            | Yes         | Array - alert objects each indicating a separa
 \- summary         | Yes         | String - A short summary of this alert to be displayed to the customer
 \- description     | Optional    | String - Detailed text description of the alert
 \- last_updated    | Optional    | Integer POSIX timestamp indicating the last time the info for the particular alert was updated
+
+### bike_types.json
+This feed is inteded to inform customers about the different bikes they can rent at a specific operator, also if an operator operates only one type of bike the customer can find some basic characteristics about that bike.
+
+Field Name        | Required    | Defines
+----------------- | ------------| ----------
+types             | Yes         | Array - bike_type objects each indicating a separate bike_type
+\- bike_type_id   | Yes         | ID (String) - unique identifier for this bike_type
+\- number_of_gears| Yes         | Integer - The number of gears this type of bicycle has, number_of_gears is 1 when bike is single speed.
+\- is_electric    | Yes         | Boolean - value to distinguish electrical from non electrical bikes.
+\- type_name      | Yes         | String - The name the operator gives to the bike, should be unique. (for example city bike or tandem)
+\- description    | Optional    | String - A description of the bike_type by the bike operator to give more details about the bike_type.
+\- images         | Optional    | Array of strings (URL's) - Array of urls that reference to images of this bike type so that customers can easily recognize different bike types based on pictures.
+
 
 ## Possible Future Enhancements
 There are some items that were proposed in an earlier version of this document but which do not fit into the current specification. They are collected here for reference and for possible discussion and inclusion in this or a future version.
